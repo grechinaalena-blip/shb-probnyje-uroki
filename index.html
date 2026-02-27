@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пробные уроки Базового курса — ЩиБорщи</title>
+<style>
+  :root {
+    --green: #5b8c3e;
+    --green-light: #e8f0e0;
+    --green-dark: #3d6b28;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --bg: #fff;
+    --bg-alt: #f8f8f5;
+    --radius: 16px;
+    --max-w: 960px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); }
+  img { max-width: 100%; height: auto; display: block; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    background: var(--bg-alt);
+    padding: 64px 0 56px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .hero .subtitle {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--text-light);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+  .hero-img {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    border-radius: var(--radius);
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    background: #ddd;
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    border-radius: var(--radius);
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a7a5e;
+    font-size: 14px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--green-dark); }
+  .btn-hint {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  /* SECTIONS */
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); }
+  section h2 {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  section h2.left { text-align: left; }
+  .section-text {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .section-text p { margin-bottom: 16px; }
+  .section-text em { color: var(--text-light); font-style: italic; }
+
+  /* LESSONS CARDS */
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+  .lesson-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .food-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 700px;
+    margin: 32px auto 0;
+  }
+  .food-gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .food-banner {
+    width: 100%;
+    max-width: 700px;
+    margin: 32px auto 0;
+    border-radius: var(--radius);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  section.alt .lesson-card { background: #fff; }
+  .lesson-num {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: var(--green-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--green);
+  }
+  .lesson-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .lesson-card p {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* PRODUCTS */
+  .products-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .products-grid span {
+    background: var(--green-light);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .products-note {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  /* FOR WHO — CHECKLIST */
+  .checklist {
+    max-width: 700px;
+    margin: 0 auto 24px;
+    list-style: none;
+  }
+  .checklist li {
+    padding: 12px 0;
+    padding-left: 36px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    border-bottom: 1px solid #f0f0ec;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .note-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--green-light);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* CHEF */
+  .chef-block {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .chef-photo {
+    width: 160px;
+    min-width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .chef-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+  .chef-info ul {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .chef-info ul li {
+    padding: 4px 0;
+    font-size: 15px;
+    color: var(--text-light);
+    padding-left: 20px;
+    position: relative;
+  }
+  .chef-info ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+  }
+  .chef-quote {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.6;
+    border-left: 3px solid var(--green);
+    padding-left: 16px;
+    margin-top: 12px;
+  }
+
+  /* REVIEWS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 24px;
+  }
+  .review-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  section.alt .review-card { background: #fff; }
+  .review-card .name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--green-dark);
+  }
+  .review-card .text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .reviews-stat {
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-light);
+  }
+  .reviews-stat strong {
+    color: var(--text);
+  }
+
+  /* COURSE BLOCK */
+  .course-block {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid var(--green);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+  }
+  .course-block h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .course-block .intro-text {
+    font-size: 15px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+  .course-table td {
+    padding: 10px 12px;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0ec;
+    vertical-align: top;
+  }
+  .course-table td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--green-dark);
+    width: 160px;
+  }
+  .course-table td:last-child { color: var(--text-light); }
+  .course-price {
+    text-align: center;
+    margin: 24px 0;
+  }
+  .price-old {
+    font-size: 18px;
+    color: var(--text-light);
+    text-decoration: line-through;
+    margin-right: 12px;
+  }
+  .price-new {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+  .price-note {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 6px;
+  }
+  .guarantee-line {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 16px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--green);
+    color: #fff;
+    padding: 56px 0;
+    text-align: center;
+  }
+  .final-cta h2 { color: #fff; margin-bottom: 16px; }
+  .final-cta .section-text { color: rgba(255,255,255,.85); }
+  .final-cta .section-text p { color: rgba(255,255,255,.85); }
+  .final-cta .btn {
+    background: #fff;
+    color: var(--green-dark);
+    margin-top: 24px;
+  }
+  .final-cta .btn:hover { background: #f0f0ec; }
+  .final-cta .btn-hint { color: rgba(255,255,255,.6); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+    border-top: 1px solid #e8e8e4;
+  }
+  footer a { color: var(--text-light); }
+
+  /* CENTER CTA */
+  .cta-center {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .chef-block { flex-direction: column; align-items: center; text-align: center; }
+    .chef-photo { width: 120px; min-width: 120px; height: 120px; }
+    .chef-quote { text-align: left; }
+    .lesson-card { flex-direction: column; align-items: center; text-align: center; }
+    .course-table td:first-child { white-space: normal; }
+    .course-block { padding: 28px 20px; }
+    section { padding: 40px 0; }
+    .hero { padding: 40px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Почему курица получается сухой?</h1>
+    <p class="subtitle">Один принцип от шефа — и вы приготовите ресторанный ужин из обычных продуктов. За 40 минут. Бесплатно.</p>
+    <img src="img/chicken-1.jpg" alt="Цыплёнок тапака с томатной сальсой и салатом — блюдо из пробного урока" class="hero-img">
+    <a href="#form" class="btn">Получить уроки</a>
+    <span class="btn-hint">2 видеоурока по теории + 1 практика с рецептом. Без обязательств.</span>
+  </div>
+</section>
+
+<!-- УРОКИ -->
+<section>
+  <div class="container">
+    <h2>Три урока от шефа — и ужин, который удивит семью</h2>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <div class="lesson-num">1</div>
+        <div>
+          <h3>Маринование</h3>
+          <p>Почему мясо получается сухим — и что с этим делать ещё до включения плиты. 10 минут, которые изменят ваш подход к готовке.</p>
+        </div>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">2</div>
+        <div>
+          <h3>Запекание</h3>
+          <p>Три способа запекания: открытое, закрытое, быстрое. Какой подходит для курицы, какой — для рыбы, а какой создаёт золотистую корочку.</p>
+        </div>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">3</div>
+        <div>
+          <h3>Практика: цыплёнок тапака</h3>
+          <p>Готовите полноценный ужин — с хрустящей корочкой, томатной сальсой и свежим салатом. Продукты — из ближайшего магазина. Время — 40 минут.</p>
+        </div>
+      </div>
+    </div>
+    <div class="food-gallery">
+      <img src="img/chicken-2.jpg" alt="Цыплёнок тапака — золотистая корочка">
+      <img src="img/chicken-4.jpg" alt="Цыплёнок тапака с салатом и сальсой">
+      <img src="img/chicken-3.jpg" alt="Цыплёнок тапака с лимоном и зеленью">
+    </div>
+    <div class="section-text" style="text-align:center;margin-top:32px;">
+      <p>Эти уроки — часть Базового курса школы «ЩиБорщи». Мы открываем их, чтобы вы попробовали наш подход: не рецепты, а логика. Не «повторите за мной», а «поймите принцип — и готовьте что угодно».</p>
+    </div>
+    <div class="cta-center">
+      <a href="#form" class="btn">Получить уроки</a>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОДУКТЫ -->
+<section class="alt">
+  <div class="container">
+    <h2>Вам понадобится</h2>
+    <div class="products-wrap">
+      <p style="text-align:center;color:var(--text-light);margin-bottom:24px;">Всё — из ближайшего магазина. Никаких экзотических специй.</p>
+      <div class="products-grid">
+        <span>🐔 Цыплёнок</span>
+        <span>Кориандр (зёрна)</span>
+        <span>Соль, перец</span>
+        <span>Сахар</span>
+        <span>🍋 Лимон</span>
+        <span>Масло растительное</span>
+        <span>Масло сливочное</span>
+        <span>🌿 Кинза</span>
+        <span>Чеснок</span>
+        <span>🍅 Помидоры</span>
+        <span>Лук красный</span>
+        <span>Базилик</span>
+      </div>
+      <p class="products-note">Нет кориандра — возьмите зиру. Нет кинзы — петрушку. Нет цыплёнка — обычную курицу. В уроке есть конструктор замен — подстроите рецепт под то, что есть дома.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ЗАЧЕМ КУРС -->
+<section>
+  <div class="container">
+    <h2>«Зачем курс, если все рецепты есть в интернете?»</h2>
+    <div class="section-text">
+      <p>Рецепты — да, есть. Тысячи. Проблема в другом: вы берёте рецепт, всё делаете по шагам, а мясо получается жёстким. Или сухим. Или «ну, нормально». И непонятно, что пошло не так.</p>
+      <p>Рецепт — это инструкция. А вам нужна логика. Понять, <em>почему</em> маринад работает, <em>зачем</em> нужен груз на сковороде, <em>какой</em> способ запекания выбрать и почему.</p>
+      <p>Когда вы понимаете принцип — вы готовите не один рецепт, а десятки. Нет нужного продукта? Заменяете. Хотите другой вкус? Меняете маринад. Один и тот же цыплёнок — и каждый раз новое блюдо.</p>
+      <p><em>«Цыплёнок табака казался мне сложным ресторанным блюдом. А оказалось — 40 минут и обычные продукты. Просто нужно было понять принцип.»</em></p>
+    </div>
+    <img src="img/chicken-5.jpg" alt="Цыплёнок тапака крупным планом — золотистая корочка" class="food-banner">
+    <div class="cta-center">
+      <a href="#form" class="btn">Получить уроки</a>
+    </div>
+  </div>
+</section>
+
+<!-- ШЕФ -->
+<section class="alt">
+  <div class="container">
+    <h2>Ваш шеф — Владимир Инжуватов</h2>
+    <div class="chef-block">
+        <img src="img/chef.jpg" alt="Владимир Инжуватов — бренд-шеф школы ЩиБорщи" class="chef-photo" style="object-fit:cover;">
+      <div class="chef-info">
+        <ul>
+          <li>Бренд-шеф школы «ЩиБорщи»</li>
+          <li>10 лет в ресторане «Пушкинъ»</li>
+          <li>Запускал рестораны в Москве, Париже, Нью-Йорке</li>
+          <li>Обучил более 6 000 домашних кулинаров</li>
+          <li>Автор книги «Счастье есть дома»</li>
+        </ul>
+        <div class="chef-quote">
+          «Моя задача — чтобы у вас получился рецепт. Не "попробуйте, может выйдет", а предсказуемый результат. Каждый раз. Чтобы вы могли повторить это блюдо пять раз подряд — и каждый раз получалось одинаково вкусно.»
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section>
+  <div class="container">
+    <h2>Это для вас, если...</h2>
+    <ul class="checklist">
+      <li>Готовите каждый день, но результат — «на троечку». Вроде съедобно, но не&nbsp;то</li>
+      <li>Курица вечно сухая, мясо жёсткое, рыбу обходите стороной — потому что «развалится» или «запахнет»</li>
+      <li>Каждый вечер одно и то же: «Что приготовить?» — и полчаса гуглите, а потом берёте привычное</li>
+      <li>Пробовали рецепты из интернета — иногда получается, иногда нет, и непонятно, почему</li>
+      <li>Продукты портятся в холодильнике — потому что непонятно, куда их деть</li>
+      <li>Чувствуете, что готовка — это стресс, а не удовольствие. Работа, ребёнок, уборка — и ещё надо кормить семью</li>
+    </ul>
+    <div class="note-box">
+      А может быть, вы считаете себя новичком и думаете: «Кулинарный курс — это для тех, кто уже умеет». Нет. Наш подход работает именно потому, что начинается с основ — с логики, а не с рецептов.<br><br>
+      80% наших учеников — люди, которые готовят уже больше 7 лет. Они не новички. Они приходят за системой. И получают результаты, которых не могли добиться годами.
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="alt">
+  <div class="container">
+    <h2>Что говорят ученики</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="name">Оксана</div>
+        <div class="text">«Во втором декрете, готовлю каждый день. После курса муж спросил: "Ты что, повара наняла?" Нет, я просто стала понимать, что делаю.»</div>
+      </div>
+      <div class="review-card">
+        <div class="name">Елизавета</div>
+        <div class="text">«Я опытный кулинар. Пришла за систематизацией — и мир перевернулся. Оказалось, столько лет делала базовые вещи неправильно.»</div>
+      </div>
+      <div class="review-card">
+        <div class="name">Юлия</div>
+        <div class="text">«Не любила готовить. Вообще. Моей настольной книгой был сборник рецептов для мультиварки. После курса — готовлю каждый день, и мне нравится.»</div>
+      </div>
+      <div class="review-card">
+        <div class="name">Леонид</div>
+        <div class="text">«Давно хотел перейти на следующий уровень. Курс дал то, чего не дают рецепты — понимание процесса. Теперь импровизирую, а не повторяю.»</div>
+      </div>
+    </div>
+    <p class="reviews-stat">Оценка учеников: <strong>9.8 из 10 баллов</strong>. Более 6 000 выпускников.</p>
+  </div>
+</section>
+
+<!-- БАЗОВЫЙ КУРС -->
+<section>
+  <div class="container">
+    <h2>Понравились уроки? Вот что ждёт дальше</h2>
+    <div class="section-text" style="text-align:center;margin-bottom:32px;">
+      <p>Пробные уроки — это 1 практика из 32. Один модуль из восьми. Один способ приготовления из четырёх.</p>
+    </div>
+    <div class="course-block">
+      <h3>Базовый курс</h3>
+      <table class="course-table">
+        <tr><td>8 модулей</td><td>Птица, мясо, рыба, овощи, фарш, крупы, завтраки, супы</td></tr>
+        <tr><td>32 практики</td><td>Каждая — полноценное блюдо с конструктором замен</td></tr>
+        <tr><td>85 техник</td><td>Жарка, варка, тушение, запекание — и десятки нюансов внутри</td></tr>
+        <tr><td>94 рецепта</td><td>32 основных + 62 дополнительных</td></tr>
+        <tr><td>Куратор</td><td>Профессионал рядом на протяжении всего обучения</td></tr>
+        <tr><td>Доступ</td><td>Материалы остаются с вами на 12 месяцев</td></tr>
+      </table>
+      <div class="course-price">
+        <div class="price-note" style="font-size:16px;color:var(--green-dark);font-weight:600;">Для участников пробных уроков — особые условия и рассрочка</div>
+      </div>
+      <div class="cta-center">
+        <a href="#form" class="btn">Получить уроки</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ФИНАЛЬНЫЙ CTA -->
+<section class="final-cta" id="form">
+  <div class="container">
+    <h2>Начните с одного ужина</h2>
+    <div class="section-text">
+      <p>Вы тратите на еду 300 000 рублей в год. За 10 лет — 3 миллиона. Отказаться от этих трат нельзя. Но можно сделать так, чтобы каждый рубль превращался во вкусный результат.</p>
+      <p>Три урока. Один ужин. И понимание, что готовить — это не кухонное рабство. Это когда забываешь о проблемах и просто в потоке делаешь что-то руками. И получается вкусно.</p>
+    </div>
+    <a href="#" class="btn">Получить уроки</a>
+    <span class="btn-hint">Бесплатно. Без обязательств. Уроки откроются сразу после регистрации.</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Школа «ЩиБорщи» — кулинарная онлайн-школа с 2015 года. Более 6 000 выпускников. Оценка учеников — 9.8 из 10.</p>
+  </div>
+</footer>
+
+</body>
+</html>
