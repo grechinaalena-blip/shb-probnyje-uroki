@@ -167,6 +167,34 @@
     line-height: 1.5;
   }
 
+  /* FORMAT */
+  .format-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+  .format-item {
+    background: var(--green-light);
+    border-radius: 12px;
+    padding: 20px 22px;
+  }
+  .format-item strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--green-dark);
+  }
+  .format-item span {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  @media (max-width: 640px) {
+    .format-grid { grid-template-columns: 1fr; }
+  }
+
   /* PRODUCTS */
   .products-wrap {
     max-width: 700px;
@@ -424,7 +452,7 @@
 <section class="hero">
   <div class="container">
     <h1>Почему курица получается сухой?</h1>
-    <p class="subtitle">Один принцип от шефа — и вы приготовите ресторанный ужин из обычных продуктов. За 40 минут. Бесплатно.</p>
+    <p class="subtitle">Один принцип от шефа — и вы уверенно приготовите ресторанный ужин из обычных продуктов. За 40 минут. Бесплатно.</p>
     <img src="img/chicken-1.jpg" alt="Цыплёнок тапака с томатной сальсой и салатом — блюдо из пробного урока" class="hero-img">
     <a href="#form" class="btn">Получить уроки</a>
     <span class="btn-hint">2 видеоурока по теории + 1 практика с рецептом. Без обязательств.</span>
@@ -464,7 +492,7 @@
       <img src="img/chicken-3.jpg" alt="Цыплёнок тапака с лимоном и зеленью">
     </div>
     <div class="section-text" style="text-align:center;margin-top:32px;">
-      <p>Эти уроки — часть Базового курса школы «ЩиБорщи». Мы открываем их, чтобы вы попробовали наш подход: не рецепты, а логика. Не «повторите за мной», а «поймите принцип — и готовьте что угодно».</p>
+      <p>После трёх уроков вы будете чувствовать себя уверенно у плиты. Не потому что выучили рецепт, а потому что поняли принцип. Это уроки из Базового курса школы «ЩиБорщи» — мы открываем их, чтобы вы попробовали наш подход.</p>
     </div>
     <div class="cta-center">
       <a href="#form" class="btn">Получить уроки</a>
@@ -472,8 +500,36 @@
   </div>
 </section>
 
-<!-- ПРОДУКТЫ -->
+<!-- ФОРМАТ -->
 <section class="alt">
+  <div class="container">
+    <h2>Как устроены уроки</h2>
+    <div class="format-grid">
+      <div class="format-item">
+        <strong>Предзаписанное видео</strong>
+        <span>Профессиональный монтаж, крупные планы. Видно каждое движение шефа.</span>
+      </div>
+      <div class="format-item">
+        <strong>10–40 минут на урок</strong>
+        <span>Теория — по 10 минут. Практика — 40 минут от начала до ужина на столе.</span>
+      </div>
+      <div class="format-item">
+        <strong>С телефона или компьютера</strong>
+        <span>Смотрите на кухне с телефона, пока готовите. Ставьте на паузу, перематывайте.</span>
+      </div>
+      <div class="format-item">
+        <strong>Без расписания</strong>
+        <span>Уроки доступны сразу. Смотрите когда удобно — утром, вечером, в выходные.</span>
+      </div>
+    </div>
+    <div class="section-text" style="text-align:center;">
+      <p><em>Работа, дети, быт — мы это понимаем. Уроки встроятся в вашу жизнь, а не потребуют перестройки расписания.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОДУКТЫ -->
+<section>
   <div class="container">
     <h2>Вам понадобится</h2>
     <div class="products-wrap">
@@ -586,18 +642,15 @@
   <div class="container">
     <h2>Понравились уроки? Вот что ждёт дальше</h2>
     <div class="section-text" style="text-align:center;margin-bottom:32px;">
-      <p>Пробные уроки — это 1 практика из 32. Один модуль из восьми. Один способ приготовления из четырёх.</p>
+      <p>Пробные уроки — маленький кусочек Базового курса. Вот что будет, если пойти дальше.</p>
     </div>
     <div class="course-block">
       <h3>Базовый курс</h3>
-      <table class="course-table">
-        <tr><td>8 модулей</td><td>Птица, мясо, рыба, овощи, фарш, крупы, завтраки, супы</td></tr>
-        <tr><td>32 практики</td><td>Каждая — полноценное блюдо с конструктором замен</td></tr>
-        <tr><td>85 техник</td><td>Жарка, варка, тушение, запекание — и десятки нюансов внутри</td></tr>
-        <tr><td>94 рецепта</td><td>32 основных + 62 дополнительных</td></tr>
-        <tr><td>Куратор</td><td>Профессионал рядом на протяжении всего обучения</td></tr>
-        <tr><td>Доступ</td><td>Материалы остаются с вами на 12 месяцев</td></tr>
-      </table>
+      <div class="section-text" style="margin-bottom:24px;">
+        <p>Через 2 месяца вы будете уверенно готовить птицу, мясо, рыбу, овощи и супы. Не по рецепту, а по логике — понимая, что и зачем вы делаете.</p>
+        <p>Вы научитесь открывать холодильник и видеть не «непонятный набор продуктов», а три варианта ужина. Планировать меню на неделю за 10 минут. Готовить быстрее, потому что понимаете порядок действий.</p>
+        <p>Рядом — куратор, который проверяет каждую практику и помогает, если что-то не получается. Материалы остаются у вас на 12 месяцев.</p>
+      </div>
       <div class="course-price">
         <div class="price-note" style="font-size:16px;color:var(--green-dark);font-weight:600;">Для участников пробных уроков — особые условия и рассрочка</div>
       </div>
