@@ -1,0 +1,8 @@
+{
+  "name": "shb-probnyje-uroki",
+  "version": "1.0.0",
+  "description": "Лендинги пробных уроков ЩиБорщи",
+  "scripts": {
+    "build": "echo 'Static site, no build needed'"
+  }
+}
